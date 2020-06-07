@@ -14,6 +14,13 @@ import list from "./routes/list";
 // ----------------------------------
 dotenv.config({path: "./configs/.env"});
 
+const {
+    PORT = 5000,
+    SESS_NAME = "sid",
+    SESS_SECRET = "top-secret",
+    SESS_LIFETIME = 1000 * 60 * 60 * 2, // 2 hrs
+} = process.env;
+
 // ----------------------------------
 // Connect to DB
 // ----------------------------------
@@ -37,10 +44,5 @@ app.use("/api/v1/list", list);
 // ----------------------------------
 // Express server
 // ----------------------------------
-const PORT = process.env.PORT || 5000;
-try {
-    app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-} catch (e) {
-    console.log(`Cannot start server on port ${PORT}`);
-}
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
