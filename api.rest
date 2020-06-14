@@ -1,0 +1,24 @@
+
+// Get all list
+GET http://localhost:5000/api/v1/list
+
+
+###
+// Get a single user by id
+GET http://localhost:5000/api/v1/list/2
+
+###
+// Get a single user by id not existing
+GET http://localhost:5000/api/v1/list/5
+
+
+###
+// Create a user
+POST http://localhost:5000/api/v1/list
+Content-Type: application/json
+
+{
+  "user": {
+    "name": "new user"
+  }
+}
