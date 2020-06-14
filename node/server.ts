@@ -1,19 +1,11 @@
-import express from "express";
-import cors from "cors";
-import compression from "compression";
 import dotenv from "dotenv";
+import app from "../express/app";
 
-
-// ----------------------------------
-// Routes Import
-// ----------------------------------
-import list from "./routes/list";
 
 // ----------------------------------
 // Environment setup
 // ----------------------------------
-dotenv.config({path: "./configs/.env"});
-
+dotenv.config({path: "../node/configs/.env"});
 const {
     PORT = 5000,
     SESS_NAME = "sid",
@@ -22,27 +14,15 @@ const {
 } = process.env;
 
 // ----------------------------------
-// Connect to DB
-// ----------------------------------
-// const connectDB = require("./config/db");
-// connectDB();
-
-// ----------------------------------
-// Express configuration
-// ----------------------------------
-const app: any = express();
-app.use(express.json());
-app.use(cors());
-app.use(compression());
-app.use(express.urlencoded({extended: true}));
-
-// ----------------------------------
-// API Routes
-// ----------------------------------
-app.use("/api/v1/list", list);
-
-// ----------------------------------
 // Express server
 // ----------------------------------
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+const server = app.listen(PORT, () => {
+    console.log(
+        "  App is running on port %d in %s mode",
+        PORT,
+        process.env.NODE_ENV ? process.env.NODE_ENV : "prod",
+    );
+    console.log("  Press CTRL-C to stop\n");
+});
 
+export default server;

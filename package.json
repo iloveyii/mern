@@ -10,7 +10,7 @@
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "serve-debug": "nodemon --inspect dist/server/server.js",
     "start": "npm run build-server && concurrently \"npm run serve\" ",
-    "serve": "cd dist && node server.js"
+    "serve": "cd dist/node && node server.js"
   },
   "keywords": [
     "node",
