@@ -1,8 +1,18 @@
-
 // @desc   Get all from List
 // @route  GET /api/v1/list
 export const getList = async (req: any, res: any, next: any) => {
-
+    try {
+        const list = [{id: 1, name: "aaaa"}, {id: 2, name: "bbb"}];
+        return res.status(200).json({
+            success: true,
+            data: list
+        });
+    } catch (error) {
+        res.send(500).json({
+            success: false,
+            error: "Server error"
+        });
+    }
 };
 
 // @desc   Add to List
