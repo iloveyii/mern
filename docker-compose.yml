@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  server:
+    container_name: server
+    image: node:12.17.0
+    command: bash -c "
+      cd /code
+      && npm start
+      "
+    volumes:
+      - .:/code
+    ports:
+      - 5000:5000
+    restart: always
